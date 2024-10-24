@@ -1,0 +1,56 @@
+mqtt:
+  image:
+    - name: Pcitture
+      unique_id: "garbage_bin_picture"
+      image_topic: camera1/bins/picture
+      image_encoding: "b64"
+      content_type: image/jpeg
+      device:
+        name: "garbage bin status"
+        identifiers:
+          - "bins_device"
+  sensor:
+    - name: "Number of Found Bins"
+      unique_id: "bins_number"
+      state_topic: "camera1/bins/result"
+      value_template: "{{ value_json.total_bins_in_zone }}"
+      json_attributes_topic: "camera1/bins/result"
+      json_attributes_template: "{{ value_json.total_bins_in_zone }}"
+      force_update: true
+      device:
+        name: "garbage bin status"
+        identifiers:
+          - "bins_device"
+    - name: "Found"
+      unique_id: "bins_found"
+      state_topic: "camera1/bins/result"
+      value_template: "{{ value_json.found_bins_in_zone }}"
+      json_attributes_topic: "camera1/bins/result"
+      json_attributes_template: "{{ value_json.found_bins_in_zone }}"
+      force_update: true
+      device:
+        name: "garbage bin status"
+        identifiers:
+          - "bins_device"
+    - name: "Missing"
+      unique_id: "bins_missing"
+      state_topic: "camera1/bins/result"
+      value_template: "{{ value_json.missing_bins_in_zone }}"
+      json_attributes_topic: "camera1/bins/result"
+      json_attributes_template: "{{ value_json.missing_bins_in_zone }}"
+      force_update: true
+      device:
+        name: "garbage bin status"
+        identifiers:
+          - "bins_device"
+    - name: "Found as JSON"
+      unique_id: "detected"
+      state_topic: "camera1/bins/result"
+      value_template: "{{ value_json.detected_bins_in_zone }}"
+      json_attributes_topic: "camera1/bins/result"
+      json_attributes_template: "{{ value_json.detected_bins_in_zone | tojson }}"
+      force_update: true
+      device:
+        name: "garbage bin status"
+        identifiers:
+          - "bins_device"

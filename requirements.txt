@@ -1,0 +1,6 @@
+paho-mqtt
+requests
+ultralytics
+opencv-python
+python-dotenv
+git+https://github.com/openai/CLIP.git
