@@ -1,0 +1,1 @@
+# Send-Camera-object-status-to-Home-assistant-
