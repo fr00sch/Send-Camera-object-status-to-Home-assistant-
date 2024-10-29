@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  yolo:
+    image: ultralytics/ultralytics:latest
+    container_name: yolo
+    restart: always
+    volumes:
+      - ./mounts/yolo/input:/input
+      - ./mounts/yolo/output:/output
+    ipc: host
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
